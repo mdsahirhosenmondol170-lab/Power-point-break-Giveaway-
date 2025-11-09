@@ -26,7 +26,7 @@ from datetime import datetime, timedelta
 
 BOT_TOKEN = "8373078905:AAH3JTi0IvXxQGTzEtXYdLNC3W34-QEcitE"     # <-- change
 ADMIN_ID = 5692210187             # <-- change
-ADMIN_USERNAME = "@MinexxProo"    # <-- change
+ADMIN_USERNAME = "MinexxProo"    # <-- change
 CHANNEL_ID =  -1003180933712      # <-- change
 
 # ============================================================
