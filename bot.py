@@ -726,12 +726,11 @@ def main():
     app.add_handler(CommandHandler("setpost", setpost_cmd))
     app.add_handler(CommandHandler("spost", spost_cmd))
 
-    # ✅ General message
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_time))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_post))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_spost))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_msg))
-
+    # ✅ General message: time → post → spost → user
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_time), 0)
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_post), 1)
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_spost), 2)
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_msg), 3)
     # ✅ Callback buttons
     app.add_handler(CallbackQueryHandler(join_button, pattern="^join$"))
     app.add_handler(CallbackQueryHandler(restart_go, pattern="^restart_go$"))
