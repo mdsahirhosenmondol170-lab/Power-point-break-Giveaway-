@@ -729,10 +729,10 @@ def main():
     app.add_handler(CommandHandler("spost", spost_cmd))
 
     # ✅ General message: post / time / bad word / join
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_post))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_time))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_spost))
-    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_msg))
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_time))
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_post))
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_spost))
+app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_msg))
 
     # ✅ Callback buttons
     app.add_handler(CallbackQueryHandler(join_button, pattern="^join$"))
