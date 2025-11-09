@@ -685,9 +685,34 @@ async def adminpanel_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
     await adminpanel_buttons(update, context)
 
 # ============================================================
-#  MAIN() — REGISTER ALL HANDLERS
+# ============================================================
+# /help — SHOW COMMAND LIST (ADMIN ONLY)
 # ============================================================
 
+async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
+
+    if update.effective_user.id != ADMIN_ID:
+        return await update.message.reply_text(
+            "❌ You are not allowed to use this command."
+        )
+
+    txt = (
+        "📖 POWER POINT BREAK BOT — COMMAND MENU\n"
+        "━━━━━━━━━━━━━━━━━━━━━━\n\n"
+        "🔹 /start – show welcome menu\n"
+        "🔹 /on – start giveaway\n"
+        "🔹 /off – stop giveaway\n"
+        "🔹 /setwinner <n> – set winner count\n"
+        "🔹 /resetlist – clear winners\n"
+        "🔹 /adminpanel – admin panel\n"
+        "🔹 /setpost – schedule giveaway post\n"
+        "🔹 /spost – set final post\n"
+        "🔹 /help – show this menu\n\n"
+        "━━━━━━━━━━━━━━━━━━━━━━\n"
+        f"👑 Admin: @{ADMIN_USERNAME}\n"
+        "━━━━━━━━━━━━━━━━━━━━━━"
+    )
+    await update.message.reply_text(txt)
 def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("help", help_cmd))
