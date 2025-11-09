@@ -715,38 +715,36 @@ async def help_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(txt)
 def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
+
     app.add_handler(CommandHandler("help", help_cmd))
-    # ✅ Base commands
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("on", on_cmd))
     app.add_handler(CommandHandler("off", off_cmd))
     app.add_handler(CommandHandler("resetlist", reset_cmd))
     app.add_handler(CommandHandler("setwinner", setwinner_cmd))
     app.add_handler(CommandHandler("adminpanel", adminpanel_cmd))
-
-    # ✅ Post handling
     app.add_handler(CommandHandler("setpost", setpost_cmd))
     app.add_handler(CommandHandler("spost", spost_cmd))
 
-    # ✅ General message: post / time / bad word / join
-app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_time))
-app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_post))
-app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_spost))
-app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_msg))
+    # ✅ General message
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_time))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_post))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, capture_spost))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, user_msg))
 
     # ✅ Callback buttons
     app.add_handler(CallbackQueryHandler(join_button, pattern="^join$"))
     app.add_handler(CallbackQueryHandler(restart_go, pattern="^restart_go$"))
 
-    # approval buttons
+    # ✅ approval buttons
     app.add_handler(CallbackQueryHandler(approve_callback, pattern="^approve$"))
     app.add_handler(CallbackQueryHandler(reject_callback, pattern="^reject$"))
 
-    # setpost confirm buttons
+    # ✅ setpost confirm buttons
     app.add_handler(CallbackQueryHandler(setpost_approve_callback, pattern="^setpost_ok$"))
     app.add_handler(CallbackQueryHandler(setpost_reject_callback, pattern="^setpost_no$"))
 
-    # adminpanel buttons
+    # ✅ adminpanel buttons
     app.add_handler(CallbackQueryHandler(adminpanel_callback, pattern="^ap_"))
 
     app.run_polling()
