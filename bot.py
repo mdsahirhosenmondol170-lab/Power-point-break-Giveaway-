@@ -690,7 +690,7 @@ async def adminpanel_callback(update: Update, context: ContextTypes.DEFAULT_TYPE
 
 def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
-    app.add_handler(CommandHandler("help", help_cmd))
+    app.add_handler(CommandHandler("help", help_cmd)
     # ✅ Base commands
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("on", on_cmd))
