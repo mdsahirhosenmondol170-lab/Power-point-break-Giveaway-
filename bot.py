@@ -1175,13 +1175,13 @@ async def user_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
     save_winner(uid, uname)
     save_user(uid, uname)
 
-    # ✅ SEND ENTRY TO ADMIN (correct location)
+    # ✅ SEND ENTRY TO ADMIN
     try:
         note = (
             "📥 NEW ENTRY RECEIVED\n"
             f"👤 User: @{uname}\n"
             f"🆔 ID: {uid}\n"
-            f"⏰ Time: {timestamp}"
+            f"⏰ Time: {timestamp}\n"
         )
         await context.bot.send_message(
             chat_id=f"@{ADMIN_USERNAME}",
