@@ -9,7 +9,7 @@ from telegram.ext import (
     filters
 )
 
-BOT_TOKEN = "PUT-YOUR-BOT-TOKEN-HERE"
+BOT_TOKEN = "8321055873:AAEbXH-5HospdM6Erato-3s1fw_o2NZ4n3I"
 ADMIN = "MinexxProo"  # admin username (without @)
 
 giveaway_on = False
