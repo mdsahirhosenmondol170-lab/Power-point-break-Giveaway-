@@ -1133,9 +1133,7 @@ def setup_handlers(app):
 
 
 
-# ================================================================
 # ✅ FALLBACK USER MSG
-# ================================================================
 async def user_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user = update.effective_user
     uid  = user.id
@@ -1151,21 +1149,25 @@ async def user_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if mwinner_active:
         if uid not in mwinner_buffer:
             mwinner_buffer.append(uid)
-        return await update.message.reply_text("✅ You have joined the Giveaway! 🍀")
+            return await update.message.reply_text("✅ You have joined the Giveaway!")
+        else:
+            return await update.message.reply_text(
+                ALREADY_TEMPLATE.format(ADMIN_USERNAME=ADMIN_USERNAME)
+            )
 
-    # Normal
+    # Normal duplicate
     if uid in joined_users:
         return await update.message.reply_text(
             ALREADY_TEMPLATE.format(ADMIN_USERNAME=ADMIN_USERNAME)
         )
 
-    # Full
+    # Full limit
     if len(winner_data) >= winner_limit:
         return await update.message.reply_text(
             FULL_TEMPLATE.format(ADMIN_USERNAME=ADMIN_USERNAME)
         )
 
-    # Accept
+    # ✅ ACCEPT
     joined_users.append(uid)
     timestamp = now()
 
@@ -1173,7 +1175,22 @@ async def user_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
     save_winner(uid, uname)
     save_user(uid, uname)
 
-    # DM
+    # ✅ SEND ENTRY TO ADMIN (correct location)
+    try:
+        note = (
+            "📥 NEW ENTRY RECEIVED\n"
+            f"👤 User: @{uname}\n"
+            f"🆔 ID: {uid}\n"
+            f"⏰ Time: {timestamp}"
+        )
+        await context.bot.send_message(
+            chat_id=f"@{ADMIN_USERNAME}",
+            text=note
+        )
+    except:
+        pass
+
+    # ✅ DM winner (optional)
     try:
         await context.bot.send_message(
             chat_id=uid,
@@ -1182,8 +1199,7 @@ async def user_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except:
         pass
 
-    await update.message.reply_text("✅ You joined the Giveaway!")
-
+    return await update.message.reply_text("✅ You joined the Giveaway!")
 
 # ================================================================
 # ✅ MAIN
