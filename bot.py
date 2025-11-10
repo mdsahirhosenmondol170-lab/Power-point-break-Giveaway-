@@ -1167,7 +1167,7 @@ async def user_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
             FULL_TEMPLATE.format(ADMIN_USERNAME=ADMIN_USERNAME)
         )
 
-    # ✅ ACCEPT
+    # ✅ ACCEPT USER
     timestamp = now()
 
     # ✅ SEND ENTRY TO ADMIN (first)
@@ -1200,8 +1200,7 @@ async def user_msg(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except:
         pass
 
-    return await update.message.reply_text("✅ You joined the Giveaway!🍀")
-
+    return await update.message.reply_text("✅ You joined the Giveaway! 🍀")
 # ================================================================
 # ✅ MAIN
 # ================================================================
