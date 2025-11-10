@@ -28,10 +28,10 @@ from telegram.ext import (
 # ✅ CONFIGURATION — MUST CHANGE BEFORE USE
 # =============================================================
 
-BOT_TOKEN       = "YOUR_BOT_TOKEN"
-ADMIN_ID        = 123456789
+BOT_TOKEN       = "8373078905:AAH3JTi0IvXxQGTzEtXYdLNC3W34-QEcitE"
+ADMIN_ID        = 5692210187
 ADMIN_USERNAME  = "MinexxProo"
-CHANNEL_ID      = -100123456789    # Must add bot as admin here
+CHANNEL_ID      =  -1003180933712    # Must add bot as admin here
 
 # Multiple Admins supported
 ADMINS = {ADMIN_ID}
