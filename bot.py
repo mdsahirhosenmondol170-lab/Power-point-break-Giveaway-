@@ -22,7 +22,7 @@ from telegram.ext import (
 # ================================================================
 # ✅ CONFIG
 # ================================================================
-BOT_TOKEN      = "8373078905:AAHSJGigDoz6gBowjN4Dj2j_pkOcYvqqLhQ"
+BOT_TOKEN      = "8321055873:AAFYKCVwiBF3Hrc9RdIG_YRRVMkNL6qcaCc"
 ADMIN_USERNAME = "MinexxProo"
 CHANNEL_ID     = -1003418547744    # <-- Change your Channel ID
 
