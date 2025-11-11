@@ -20,7 +20,7 @@ from telegram.ext import (
 # ==============================
 # ✅ BOT CONFIG
 # ==============================
-BOT_TOKEN = "PUT-YOUR-BOT-TOKEN"       # << must update with your bot token
+BOT_TOKEN = "8370403090:AAG-QBNzge4OdldCSGDAIiWtJQEqSRAVnlw"       # << must update with your bot token
 ADMIN_USERNAME = "MinexxProo"          # admin username WITHOUT @
 
 DATA_FILE = "botdata.json"             # json database file
